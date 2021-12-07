@@ -1,5 +1,6 @@
-import 'package:tacaro/shared/theme/app_colors.dart';
-import 'package:tacaro/shared/theme/text_styles.dart';
+import 'app_colors.dart';
+import 'text_styles.dart';
+export 'app_text.dart';
 
 class AppTheme {
   static final AppTheme instance = AppTheme();
