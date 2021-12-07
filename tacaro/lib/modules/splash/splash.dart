@@ -6,6 +6,9 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(seconds: 2)).then((value) {
+      Navigator.pushReplacementNamed(context, "/login");
+    });
     return Scaffold(
       backgroundColor: AppTheme.colors.background,
       body: Center(
