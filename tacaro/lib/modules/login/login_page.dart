@@ -18,6 +18,11 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: AppTheme.colors.background,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(
+            parent: ScrollPhysics(
+              parent: NeverScrollableScrollPhysics(),
+            ),
+          ),
           child: Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 50,
