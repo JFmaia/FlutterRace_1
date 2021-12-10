@@ -14,10 +14,47 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final controller = LoginController();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    controller.addListener(
+      () {
+        controller.state.when(
+          success: (value) => Navigator.pushReplacementNamed(context, "/home"),
+          error: (message, _) => scaffoldKey.currentState!.showBottomSheet(
+            (context) => BottomSheet(
+              onClosing: () {},
+              builder: (context) => Container(
+                decoration: BoxDecoration(color: AppTheme.colors.background),
+                height: 40,
+                width: double.maxFinite,
+                child: Center(
+                  child: Text(
+                    message,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          orElse: () {},
+        );
+      },
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: AppTheme.colors.background,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -66,23 +103,39 @@ class _LoginPageState extends State<LoginPage> {
                         ? null
                         : "Digite uma senha mais forte!",
                   ),
-                  SizedBox(height: 15),
-                  Button(
-                    size: size,
-                    label: "Entrar",
-                    type: ButtonType.fill,
-                    onPressed: () {
-                      controller.login();
-                    },
-                  ),
                   SizedBox(height: 20),
-                  Button(
-                    size: size,
-                    label: "Criar conta",
-                    type: ButtonType.outline,
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/login/create-account");
-                    },
+                  AnimatedBuilder(
+                    animation: controller,
+                    builder: (_, __) => controller.state.when(
+                      loading: () => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 50),
+                        child: CircularProgressIndicator(
+                          color: AppTheme.colors.primary,
+                        ),
+                      ),
+                      orElse: () => Column(
+                        children: [
+                          Button(
+                            size: size,
+                            label: "Entrar",
+                            type: ButtonType.fill,
+                            onPressed: () {
+                              controller.login();
+                            },
+                          ),
+                          SizedBox(height: 15),
+                          Button(
+                            size: size,
+                            label: "Criar conta",
+                            type: ButtonType.outline,
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(
+                                  context, "/login/create-account");
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
