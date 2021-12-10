@@ -4,10 +4,16 @@ import 'package:tacaro/shared/theme/app_theme.dart';
 class InputText extends StatelessWidget {
   final String label;
   final String hint;
+  final bool obscure;
+  final void Function(String)? onChanged;
+  final String? Function(String)? validator;
   const InputText({
     Key? key,
     required this.label,
     required this.hint,
+    this.obscure = false,
+    this.onChanged,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -18,6 +24,13 @@ class InputText extends StatelessWidget {
         Text(label).label,
         SizedBox(height: 11),
         TextFormField(
+          onChanged: onChanged,
+          obscureText: obscure,
+          validator: (value) {
+            if (validator != null) {
+              return validator!(value ?? "");
+            }
+          },
           style: AppTheme.textStyles.input,
           decoration: InputDecoration(
             hintStyle: AppTheme.textStyles.hint,
