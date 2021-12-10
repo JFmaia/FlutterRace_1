@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tacaro/shared/theme/app_theme.dart';
 import 'package:tacaro/shared/widgets/button/button.dart';
 import 'package:tacaro/shared/widgets/input_text/input_text.dart';
+import 'package:validators/validators.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -45,13 +46,20 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 InputText(
+                  onChanged: print,
                   label: "Email",
                   hint: "contato@fluterando.com",
+                  validator: (value) =>
+                      isEmail(value) ? null : "Digite um e-mail valido!",
                 ),
                 SizedBox(height: 18),
                 InputText(
+                  onChanged: print,
                   label: "Senha",
                   hint: "Digite sua senha",
+                  obscure: true,
+                  validator: (value) =>
+                      value.length >= 6 ? null : "Digite uma senha mais forte!",
                 ),
                 SizedBox(height: 15),
                 Button(
@@ -65,7 +73,9 @@ class _LoginPageState extends State<LoginPage> {
                   size: size,
                   label: "Criar conta",
                   type: ButtonType.outline,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/login/create-account");
+                  },
                 ),
               ],
             ),
