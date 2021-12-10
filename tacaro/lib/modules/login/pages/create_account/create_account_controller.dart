@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:tacaro/shared/utils/app_state.dart';
 
-class CreateAccountController {
+class CreateAccountController extends ChangeNotifier {
   String _email = "";
   String _password = "";
   String _name = "";
   final formKey = GlobalKey<FormState>();
+  AppState state = AppState.empty();
 
   void onChange({String? email, String? password, String? name}) {
     _email = email ?? _email;
     _password = password ?? _password;
     _name = name ?? _name;
+  }
+
+  void update(AppState state) {
+    this.state = state;
+    notifyListeners();
   }
 
   bool validate() {
@@ -21,10 +28,17 @@ class CreateAccountController {
     return false;
   }
 
-  void create() {
+  Future<void> create() async {
     if (validate()) {
-      // ignore: avoid_print
-      print("Pode chamar o backend");
+      try {
+        update(AppState.loading());
+        await Future.delayed(Duration(seconds: 4));
+        update(AppState.success<String>("Deu Certo"));
+      } catch (e) {
+        update(
+          AppState.error("Não foi possivel criar conta."),
+        );
+      }
     }
   }
 }
