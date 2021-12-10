@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tacaro/modules/home/home_page.dart';
 import 'package:tacaro/modules/login/login_page.dart';
 import 'package:tacaro/modules/login/pages/create_account/create_account_page.dart';
 import 'package:tacaro/modules/splash/splash.dart';
@@ -17,6 +18,7 @@ class AppWidget extends StatelessWidget {
         "/splash": (context) => const SplashPage(),
         "/login": (context) => const LoginPage(),
         "/login/create-account": (context) => const CreateAccountPage(),
+        "/home": (context) => const HomePage(),
       },
     );
   }
