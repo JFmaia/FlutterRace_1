@@ -14,6 +14,41 @@ class CreateAccountPage extends StatefulWidget {
 
 class _CreateAccountPageState extends State<CreateAccountPage> {
   final controller = CreateAccountController();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
+  void initState() {
+    controller.addListener(
+      () {
+        controller.state.when(
+          success: (value) => Navigator.pushReplacementNamed(context, "/home"),
+          error: (message, _) => scaffoldKey.currentState!.showBottomSheet(
+            (context) => BottomSheet(
+              onClosing: () {},
+              builder: (context) => Container(
+                decoration: BoxDecoration(color: AppTheme.colors.background),
+                height: 40,
+                width: double.maxFinite,
+                child: Center(
+                  child: Text(
+                    message,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          orElse: () {},
+        );
+      },
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -23,7 +58,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
         elevation: 0,
         leading: BackButton(
           color: AppTheme.colors.backButton,
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.pushReplacementNamed(context, "/login"),
         ),
       ),
       backgroundColor: AppTheme.colors.background,
@@ -82,14 +117,27 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         : "Digite uma senha mais forte!",
                     onChanged: (value) => controller.onChange(password: value),
                   ),
-                  SizedBox(height: 15),
-                  Button(
-                    size: size,
-                    label: "Criar conta",
-                    type: ButtonType.fill,
-                    onPressed: () {
-                      controller.create();
-                    },
+                  SizedBox(height: 50),
+                  AnimatedBuilder(
+                    animation: controller,
+                    builder: (_, __) => controller.state.when(
+                      loading: () => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 45),
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: AppTheme.colors.primary,
+                          ),
+                        ),
+                      ),
+                      orElse: () => Button(
+                        size: size,
+                        label: "Criar conta",
+                        type: ButtonType.fill,
+                        onPressed: () {
+                          controller.create();
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
