@@ -56,7 +56,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onPressed,
       child: Container(
         height: size.height * 0.08,
         width: double.maxFinite,
