@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tacaro/modules/login/pages/create_account/login_controller.dart';
+import 'package:tacaro/modules/login/login_controller.dart';
 import 'package:tacaro/shared/theme/app_theme.dart';
 import 'package:tacaro/shared/widgets/button/button.dart';
 import 'package:tacaro/shared/widgets/input_text/input_text.dart';
