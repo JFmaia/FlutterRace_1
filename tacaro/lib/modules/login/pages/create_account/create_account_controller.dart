@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tacaro/shared/services/app_database.dart';
 import 'package:tacaro/shared/utils/app_state.dart';
 
 class CreateAccountController extends ChangeNotifier {
@@ -32,7 +33,11 @@ class CreateAccountController extends ChangeNotifier {
     if (validate()) {
       try {
         update(AppState.loading());
-        await Future.delayed(Duration(seconds: 4));
+        await AppDataBase.instance.createAccount(
+          email: _email,
+          password: _password,
+          name: _name,
+        );
         update(AppState.success<String>("Deu Certo"));
       } catch (e) {
         update(
