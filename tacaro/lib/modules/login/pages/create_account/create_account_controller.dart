@@ -4,14 +4,13 @@ import 'package:tacaro/modules/models/user_model.dart';
 import 'package:tacaro/shared/utils/app_state.dart';
 
 class CreateAccountController extends ChangeNotifier {
+  final LoginRepository repository;
+  AppState state = AppState.empty();
+  final formKey = GlobalKey<FormState>();
+
   String _email = "";
   String _password = "";
   String _name = "";
-  final formKey = GlobalKey<FormState>();
-  AppState state = AppState.empty();
-
-  final LoginRepository repository;
-
   CreateAccountController({
     required this.repository,
   });
@@ -47,9 +46,7 @@ class CreateAccountController extends ChangeNotifier {
         );
         update(AppState.success<UserModel>(response));
       } catch (e) {
-        update(
-          AppState.error(e.toString()),
-        );
+        update(AppState.error(e.toString()));
       }
     }
   }

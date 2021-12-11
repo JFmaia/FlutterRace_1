@@ -17,17 +17,17 @@ class CreateAccountPage extends StatefulWidget {
 class _CreateAccountPageState extends State<CreateAccountPage> {
   late final CreateAccountController controller;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     controller = CreateAccountController(
-      repository: LoginRepositoryImpl(
-        database: AppDataBase.instance,
-      ),
+      repository: LoginRepositoryImpl(database: AppDataBase.instance),
     );
+
     controller.addListener(
       () {
         controller.state.when(
-          success: (value) => Navigator.pushReplacementNamed(context, "/home"),
+          success: (value) => Navigator.pop(context),
           error: (message, _) => scaffoldKey.currentState!.showBottomSheet(
             (context) => BottomSheet(
               onClosing: () {},
@@ -65,7 +65,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
         elevation: 0,
         leading: BackButton(
           color: AppTheme.colors.backButton,
-          onPressed: () => Navigator.pushReplacementNamed(context, "/login"),
         ),
       ),
       backgroundColor: AppTheme.colors.background,
