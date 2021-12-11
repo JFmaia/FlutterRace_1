@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:supabase/supabase.dart';
 import 'package:tacaro/shared/services/app_database.dart';
 
@@ -15,12 +14,6 @@ class SupabaseDataBase implements AppDataBase {
       const String.fromEnvironment("SUPABASEURL"),
       const String.fromEnvironment("SUPABASEKEY"),
     );
-    if (!kReleaseMode) {
-      // ignore: avoid_print
-      print("Database inicializado");
-      // ignore: avoid_print
-      print("URL: ${client.supabaseUrl}, KEY: ${client.supabaseKey}");
-    }
   }
 
   @override
