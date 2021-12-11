@@ -45,7 +45,7 @@ class SupabaseDataBase implements AppDataBase {
       {required String email, required String password}) async {
     final response = await client.auth.signIn(email: email, password: password);
     if (response.error == null) {
-      final user = UserModel.fromMap(response.user!.toJson());
+      final user = await getUser(response.user!.id);
       return user;
     } else {
       throw Exception(
