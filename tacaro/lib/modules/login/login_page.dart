@@ -136,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                             label: "Criar conta",
                             type: ButtonType.outline,
                             onPressed: () {
-                              Navigator.pushReplacementNamed(
+                              Navigator.pushNamed(
                                   context, "/login/create-account");
                             },
                           ),
