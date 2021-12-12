@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tacaro/modules/home/home_page.dart';
 import 'package:tacaro/modules/login/login_page.dart';
 import 'package:tacaro/modules/login/pages/create_account/create_account_page.dart';
+import 'package:tacaro/modules/models/user_model.dart';
 import 'package:tacaro/modules/splash/splash.dart';
 
 class AppWidget extends StatelessWidget {
@@ -13,12 +14,13 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Flutter Race #1",
       theme: ThemeData(primarySwatch: Colors.green),
-      initialRoute: "/splash",
+      initialRoute: "/home",
       routes: {
         "/splash": (context) => const SplashPage(),
         "/login": (context) => const LoginPage(),
         "/login/create-account": (context) => const CreateAccountPage(),
-        "/home": (context) => const HomePage(),
+        "/home": (context) => HomePage(
+            user: ModalRoute.of(context)!.settings.arguments as UserModel),
       },
     );
   }
