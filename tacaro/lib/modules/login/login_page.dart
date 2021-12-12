@@ -28,7 +28,11 @@ class _LoginPageState extends State<LoginPage> {
     controller.addListener(
       () {
         controller.state.when(
-          success: (value) => Navigator.pushReplacementNamed(context, "/home"),
+          success: (value) => Navigator.pushNamed(
+            context,
+            "/home",
+            arguments: value,
+          ),
           error: (message, _) => scaffoldKey.currentState!.showBottomSheet(
             (context) => BottomSheet(
               onClosing: () {},
