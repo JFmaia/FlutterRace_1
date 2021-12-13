@@ -2,7 +2,7 @@ import 'dart:ui';
 
 abstract class IAppColors {
   Color get title;
-  Color get subTitle;
+  Color get subtitle;
   Color get primary;
   Color get buttonDisabled;
   Color get textDisabled;
@@ -17,9 +17,6 @@ abstract class IAppColors {
 }
 
 class AppColors implements IAppColors {
-  @override
-  Color get primary => const Color(0xFF27AE60);
-
   @override
   Color get background => const Color(0xFFF7F7F7);
 
@@ -36,6 +33,9 @@ class AppColors implements IAppColors {
   Color get inputNormal => const Color(0xFF949B9C);
 
   @override
+  Color get primary => const Color(0xFF27AE60);
+
+  @override
   Color get textColor => const Color(0xFF272727);
 
   @override
@@ -48,8 +48,7 @@ class AppColors implements IAppColors {
   Color get border => const Color(0xFFE9E9EC);
 
   @override
-  Color get subTitle => const Color(0xFF949B9C);
-
+  Color get subtitle => const Color(0xFF949B9C);
   @override
   Color get title => const Color(0xFF1E1F20);
 
