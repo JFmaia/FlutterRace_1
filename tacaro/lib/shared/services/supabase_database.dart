@@ -83,6 +83,7 @@ class SupabaseDataBase implements AppDataBase {
     throw UnimplementedError();
   }
 
+  // Esse metodo busca no banco de dados todas as compras.
   @override
   Future<List<Map<String, dynamic>>> getAll(String table) async {
     final response =
