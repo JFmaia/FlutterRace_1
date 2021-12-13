@@ -1,5 +1,5 @@
 import 'package:supabase/supabase.dart';
-import 'package:tacaro/modules/models/user_model.dart';
+import 'package:tacaro/shared/models/user_model.dart';
 import 'package:tacaro/shared/services/app_database.dart';
 
 class SupabaseDataBase implements AppDataBase {

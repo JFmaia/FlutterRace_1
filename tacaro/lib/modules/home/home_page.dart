@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tacaro/modules/models/user_model.dart';
+import 'package:tacaro/shared/models/user_model.dart';
 import 'package:tacaro/shared/theme/app_theme.dart';
 import 'package:tacaro/shared/widgets/app_list_tile/app_list_tile.dart';
 import 'package:tacaro/shared/widgets/bottom_navigator/app_bottom_navigator.dart';

@@ -1,5 +1,5 @@
 import 'package:tacaro/modules/login/repositories/login_repository.dart';
-import 'package:tacaro/modules/models/user_model.dart';
+import 'package:tacaro/shared/models/user_model.dart';
 import 'package:tacaro/shared/services/app_database.dart';
 
 class LoginRepositoryImpl implements LoginRepository {

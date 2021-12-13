@@ -1,4 +1,4 @@
-import 'package:tacaro/modules/models/user_model.dart';
+import 'package:tacaro/shared/models/user_model.dart';
 
 abstract class LoginRepository {
   Future<UserModel> login({

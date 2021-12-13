@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tacaro/modules/home/home_page.dart';
 import 'package:tacaro/modules/login/login_page.dart';
 import 'package:tacaro/modules/login/pages/create_account/create_account_page.dart';
-import 'package:tacaro/modules/models/user_model.dart';
 import 'package:tacaro/modules/splash/splash.dart';
+import 'package:tacaro/shared/models/user_model.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
