@@ -4,6 +4,9 @@ import 'package:tacaro/shared/services/supabase_database.dart';
 abstract class AppDataBase {
   static final AppDataBase instance = SupabaseDataBase();
   void init();
+  Future<List<Map<String, dynamic>>> getAll(String table);
+  Future<bool> create(
+      {required String table, required Map<String, dynamic> data});
   Future<UserModel> createUser(UserModel user);
   Future<UserModel> getUser(String id);
   Future<UserModel> login({required String email, required String password});
