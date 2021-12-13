@@ -44,16 +44,11 @@ class _HomePageState extends State<HomePage> {
               AppListTile(),
             ],
           ),
-          Positioned(
-            bottom: 14,
-            left: 26,
-            right: 26,
-            child: AppBottomNavigator(
-              onChanged: changedIndex,
-              currentIndex: currentIndex,
-            ),
-          ),
         ],
+      ),
+      bottomNavigationBar: AppBottomNavigator(
+        onChanged: changedIndex,
+        currentIndex: currentIndex,
       ),
     );
   }
