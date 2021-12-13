@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tacaro/shared/theme/app_theme.dart';
 
 class InputText extends StatelessWidget {
@@ -7,6 +8,8 @@ class InputText extends StatelessWidget {
   final bool obscure;
   final void Function(String)? onChanged;
   final String? Function(String)? validator;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextInputType? keyboardType;
   const InputText({
     Key? key,
     required this.label,
@@ -14,6 +17,8 @@ class InputText extends StatelessWidget {
     this.obscure = false,
     this.onChanged,
     this.validator,
+    this.inputFormatters,
+    this.keyboardType,
   }) : super(key: key);
 
   @override
@@ -22,10 +27,14 @@ class InputText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label).label,
-        SizedBox(height: 11),
+        SizedBox(
+          height: 12,
+        ),
         TextFormField(
-          onChanged: onChanged,
+          keyboardType: keyboardType,
+          inputFormatters: inputFormatters,
           obscureText: obscure,
+          onChanged: onChanged,
           validator: (value) {
             if (validator != null) {
               return validator!(value ?? "");
@@ -33,15 +42,11 @@ class InputText extends StatelessWidget {
           },
           style: AppTheme.textStyles.input,
           decoration: InputDecoration(
-            hintStyle: AppTheme.textStyles.hint,
-            hintText: hint,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(
-                color: AppTheme.colors.border,
-              ),
-            ),
-          ),
+              hintStyle: AppTheme.textStyles.hint,
+              hintText: hint,
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: AppTheme.colors.border))),
         ),
       ],
     );
