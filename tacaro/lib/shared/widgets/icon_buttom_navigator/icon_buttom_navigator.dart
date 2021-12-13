@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tacaro/shared/theme/app_theme.dart';
 
-class IconButtomNavigator extends StatelessWidget {
+class IconBottomNavigator extends StatelessWidget {
   final Function() onTap;
   final bool enabled;
   final IconData icon;
 
-  const IconButtomNavigator({
+  const IconBottomNavigator({
     Key? key,
     required this.onTap,
     required this.enabled,
@@ -20,16 +20,16 @@ class IconButtomNavigator extends StatelessWidget {
       child: Container(
         width: 40,
         height: 40,
-        decoration: BoxDecoration(
-          color: enabled ? AppTheme.colors.primary : AppTheme.colors.background,
-          borderRadius: BorderRadius.circular(12),
-        ),
         child: Icon(
           icon,
           color: enabled
               ? AppTheme.colors.textEnabled
               : AppTheme.colors.iconInactive,
         ),
+        decoration: BoxDecoration(
+            color:
+                enabled ? AppTheme.colors.primary : AppTheme.colors.background,
+            borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
