@@ -77,10 +77,15 @@ class SupabaseDataBase implements AppDataBase {
     }
   }
 
+  //Cria uma linha de produto no banco.
   @override
   Future<bool> create(
-      {required String table, required Map<String, dynamic> data}) {
-    throw UnimplementedError();
+      {required String table, required Map<String, dynamic> data}) async {
+    final response = await client.from(table).insert(data).execute();
+    if (response.error != null) {
+      throw Exception(response.error!.message);
+    }
+    return true;
   }
 
   // Esse metodo busca no banco de dados todas as compras.
