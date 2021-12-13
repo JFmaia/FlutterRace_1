@@ -7,6 +7,8 @@ class FeedRepositoryImpl implements FeedRepository {
   FeedRepositoryImpl({
     required this.database,
   });
+
+  //Esse metodo pede ao banco de dados todos as compras e repassa para o controller que só recebe.
   @override
   Future<List<OrderModel>> getAll() async {
     final response = await database.getAll("orders");
