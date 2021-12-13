@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tacaro/modules/feed/repositories/feed_repository.dart';
 import 'package:tacaro/shared/models/order_model.dart';
+import 'package:tacaro/shared/models/product_model.dart';
 import 'package:tacaro/shared/utils/app_state.dart';
 
 class FeedController extends ChangeNotifier {
@@ -25,40 +26,40 @@ class FeedController extends ChangeNotifier {
     return sum;
   }
 
-  // List<ProductModel> get products {
-  //   final products = <ProductModel>[];
-  //   for (var item in orders) {
-  //     final product =
-  //         ProductModel(name: item.name, lastPrice: 0, currentPrice: item.price);
-  //     final index =
-  //         products.indexWhere((element) => element.name == product.name);
-  //     if (index != -1) {
-  //       final currentProduct = products[index];
-  //       products[index] = currentProduct.copyWith(lastPrice: item.price);
-  //     } else {
-  //       products.add(product);
-  //     }
-  //   }
-  //   return products;
-  // }
+  List<ProductModel> get products {
+    final products = <ProductModel>[];
+    for (var item in orders) {
+      final product =
+          ProductModel(name: item.name, lastPrice: 0, currentPrice: item.price);
+      final index =
+          products.indexWhere((element) => element.name == product.name);
+      if (index != -1) {
+        final currentProduct = products[index];
+        products[index] = currentProduct.copyWith(lastPrice: item.price);
+      } else {
+        products.add(product);
+      }
+    }
+    return products;
+  }
 
-  // double calcChart(List<ProductModel> products) {
-  //   var up = 0.0;
-  //   var down = 0.0;
-  //   for (var item in products) {
-  //     if (item.currentPrice < item.lastPrice) {
-  //       up += 1;
-  //     } else {
-  //       down += 1;
-  //     }
-  //   }
-  //   final result = down / up;
-  //   if (result > 1) {
-  //     return 1;
-  //   } else {
-  //     return result;
-  //   }
-  // }
+  double calcChart(List<ProductModel> products) {
+    var up = 0.0;
+    var down = 0.0;
+    for (var item in products) {
+      if (item.currentPrice < item.lastPrice) {
+        up += 1;
+      } else {
+        down += 1;
+      }
+    }
+    final result = down / up;
+    if (result > 1) {
+      return 1;
+    } else {
+      return result;
+    }
+  }
 
   // Esse metodo recebe todas as compras feitas.
   Future<void> getData() async {
