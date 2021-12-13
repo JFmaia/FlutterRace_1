@@ -93,7 +93,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   SizedBox(height: 10),
                   Text(
                     "Mantenha seus gastos em dia",
-                    style: AppTheme.textStyles.subTitle,
+                    style: AppTheme.textStyles.subtitle,
                   ),
                   SizedBox(
                     height: 38,
