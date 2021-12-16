@@ -39,7 +39,9 @@ class _CreateBottomsheetState extends State<CreateBottomsheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 42, vertical: 16),
+      padding: EdgeInsets.symmetric(
+        horizontal: 42,
+      ),
       child: Form(
         key: controller.formKey,
         child: Column(
@@ -85,7 +87,7 @@ class _CreateBottomsheetState extends State<CreateBottomsheet> {
               height: 8,
             ),
             SizedBox(
-              height: 8,
+              height: 4,
             ),
             AnimatedBuilder(
               animation: controller,

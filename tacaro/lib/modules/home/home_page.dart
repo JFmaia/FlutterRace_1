@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   void changeIndex(int index) async {
     if (index == 3) {
       await showModalBottomSheet(
-          isScrollControlled: true,
+          isScrollControlled: false,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(32),
