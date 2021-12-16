@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   void changeIndex(int index) async {
     if (index == 3) {
       await showModalBottomSheet(
+          isScrollControlled: true,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(32),
@@ -31,7 +32,8 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           context: context,
-          builder: (context) => CreateBottomsheet());
+          builder: (context) =>
+              SingleChildScrollView(child: CreateBottomsheet()));
     } else {
       currentIndex = index;
     }
