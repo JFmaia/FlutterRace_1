@@ -39,9 +39,7 @@ class _CreateBottomsheetState extends State<CreateBottomsheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom,
-      ),
+      padding: MediaQuery.of(context).viewInsets,
       child: Container(
         padding: EdgeInsets.symmetric(
           horizontal: 42,

@@ -24,16 +24,19 @@ class _HomePageState extends State<HomePage> {
   void changeIndex(int index) async {
     if (index == 3) {
       await showModalBottomSheet(
-          isScrollControlled: true,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(32),
-              topRight: Radius.circular(32),
-            ),
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(32),
+            topRight: Radius.circular(32),
           ),
-          context: context,
-          builder: (context) =>
-              SingleChildScrollView(child: CreateBottomsheet()));
+        ),
+        context: context,
+        builder: (context) => SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: CreateBottomsheet(),
+        ),
+      );
     } else {
       currentIndex = index;
     }
