@@ -85,7 +85,7 @@ class _CreateBottomsheetState extends State<CreateBottomsheet> {
               height: 8,
             ),
             SizedBox(
-              height: 20,
+              height: 8,
             ),
             AnimatedBuilder(
               animation: controller,
@@ -97,7 +97,7 @@ class _CreateBottomsheetState extends State<CreateBottomsheet> {
                   onPressed: () {
                     controller.create();
                   },
-                  size: MediaQuery.of(context).size * 0.70,
+                  size: MediaQuery.of(context).size * 0.90,
                 ),
               ),
             ),
