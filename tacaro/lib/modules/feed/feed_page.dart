@@ -32,70 +32,75 @@ class _FeedPageState extends State<FeedPage> {
       top: true,
       bottom: false,
       child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: AnimatedBuilder(
-        animation: controller,
-        builder: (_, __) => controller.state.when(
-            success: (value) {
-              final orders = value as List<OrderModel>;
-              final products = controller.products;
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CardChart(
-                          value: controller.sumTotal,
-                          percent: controller.calcChart(products),
+            animation: controller,
+            builder: (_, __) => controller.state.when(
+                success: (value) {
+                  final orders = value as List<OrderModel>;
+                  final products = controller.products;
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
                         ),
-                        SizedBox(
-                          height: 27,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CardChart(
+                              value: controller.sumTotal,
+                              percent: controller.calcChart(products),
+                            ),
+                            SizedBox(
+                              height: 27,
+                            ),
+                            Text("Preço dos produtos").label,
+                            SizedBox(
+                              height: 14,
+                            ),
+                          ],
                         ),
-                        Text("Preço dos produtos").label,
-                        SizedBox(
-                          height: 14,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: 126,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: products.length,
-                      itemBuilder: (context, index) => CardProduct(
-                        product: products[index],
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 27,
-                        ),
-                        Text("Suas últimas compras").label,
-                        SizedBox(
-                          height: 14,
-                        ),
-                        for (var order in orders)
-                          AppListTile(
-                            order: order,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: 126,
+                        child: ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: products.length,
+                          itemBuilder: (context, index) => CardProduct(
+                            product: products[index],
                           ),
-                      ],
-                    ),
-                  )
-                ],
-              );
-            },
-            orElse: () => Container()),
-      )),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 27,
+                            ),
+                            Text("Suas últimas compras").label,
+                            SizedBox(
+                              height: 14,
+                            ),
+                            for (var order in orders)
+                              AppListTile(
+                                order: order,
+                              ),
+                          ],
+                        ),
+                      )
+                    ],
+                  );
+                },
+                orElse: () => Container()),
+          )),
     );
   }
 }
