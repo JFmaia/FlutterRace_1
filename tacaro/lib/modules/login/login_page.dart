@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
     controller.addListener(
       () {
         controller.state.when(
-          success: (value) => Navigator.pushNamed(
+          success: (value) => Navigator.pushReplacementNamed(
             context,
             "/home",
             arguments: value,
