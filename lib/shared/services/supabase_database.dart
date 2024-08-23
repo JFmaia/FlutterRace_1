@@ -8,13 +8,14 @@ class SupabaseDataBase implements AppDataBase {
   SupabaseDataBase() {
     init();
   }
-
+  final url = "https://osqcmhlnngsilsdyvcmp.supabase.co";
+  final key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzOTI0MjM5MSwiZXhwIjoxOTU0ODE4MzkxfQ.Qb-Es3yMIt_GJrmm9BjwXLwGPqtDQN2P8qzTKr6tXDk";
   //Inicialização do banco de dados.
   @override
   void init() {
     client = SupabaseClient(
-      const String.fromEnvironment("SUPABASEURL"),
-      const String.fromEnvironment("SUPABASEKEY"),
+      url,
+      key
     );
   }
 

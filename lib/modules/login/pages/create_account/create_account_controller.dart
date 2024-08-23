@@ -44,6 +44,7 @@ class CreateAccountController extends ChangeNotifier {
           password: _password,
           name: _name,
         );
+      
         update(AppState.success<UserModel>(response));
       } catch (e) {
         update(AppState.error(e.toString()));

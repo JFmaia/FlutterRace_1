@@ -14,7 +14,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Flutter Race #1",
+      title: "Tacaro",
       theme: ThemeData(primarySwatch: Colors.green),
       initialRoute: "/splash",
       routes: {

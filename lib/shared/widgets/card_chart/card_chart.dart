@@ -15,7 +15,7 @@ class CardChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.maxFinite,
-        height: 216,
+        height: 250,
         decoration: BoxDecoration(
             color: AppTheme.colors.textEnabled,
             borderRadius: BorderRadius.circular(10)),

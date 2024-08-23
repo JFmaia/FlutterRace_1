@@ -38,6 +38,8 @@ class InputText extends StatelessWidget {
           validator: (value) {
             if (validator != null) {
               return validator!(value ?? "");
+            } else{
+              return null;
             }
           },
           style: AppTheme.textStyles.input,

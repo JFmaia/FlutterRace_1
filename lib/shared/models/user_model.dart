@@ -47,7 +47,7 @@ class UserModel {
   String toString() => 'UserModel(id: $id, email: $email, name: $name)';
 
   @override
-  bool operator ==(Object other) {
+  bool operator == (Object other) {
     if (identical(this, other)) return true;
 
     return other is UserModel &&

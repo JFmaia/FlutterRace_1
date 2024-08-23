@@ -69,7 +69,7 @@ class _CreateBottomsheetState extends State<CreateBottomsheet> {
                 validator: (value) =>
                     value.isNotEmpty ? null : "Favor digitar um valor",
                 inputFormatters: [
-                  MoneyInputFormatter(
+                  CurrencyInputFormatter(
                     leadingSymbol: "R\$",
                   )
                 ],

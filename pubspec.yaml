@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  google_fonts: ^2.1.0
+  google_fonts: ^4.0.0
   validators: ^3.0.0
   supabase: ^0.2.10
   font_awesome_flutter: ^9.2.0

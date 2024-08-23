@@ -67,7 +67,7 @@ class _FeedPageState extends State<FeedPage> {
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
-                        height: 126,
+                        height: 150,
                         child: ListView.builder(
                           physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
